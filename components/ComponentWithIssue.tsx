@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
-import { makeStyles } from "tss-react/mui";
+import { tss } from "tss-react/mui";
 
-const useStyles = makeStyles<void, "link" | "icon">()(
-  (_theme, _props, classes) => ({
+const useStyles = tss
+  .withName("ComponentWithIssue")
+  .withNestedSelectors<"icon">()
+  .create(({ classes }) => ({
     link: {
       // Removing this fixes the issue
       [`& .${classes.icon}`]: {
@@ -12,8 +14,7 @@ const useStyles = makeStyles<void, "link" | "icon">()(
       },
     },
     icon: {},
-  })
-);
+  }));
 
 const ComponentWithIssue = () => {
   const { classes } = useStyles();

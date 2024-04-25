@@ -1,8 +1,8 @@
 "use client";
-import { makeStyles } from "tss-react/mui";
+import { tss } from "tss-react/mui";
 import React from "react";
 
-const _useStyles = makeStyles()((theme) => ({}));
+const _useStyles = tss.create(() => ({}));
 
 function OtherComponentThatCallsMakeStyles() {
   return null;
